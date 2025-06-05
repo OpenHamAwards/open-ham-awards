@@ -6,7 +6,7 @@ Open Ham Awards is an open-source platform designed to help ham radio clubs and 
 
 The main goal is to provide a modern, user-friendly, and extensible system for:
 
-*   Defining and managing different types of ham radio awards (permanent, temporary, competitive, non-competitive).
+*   Defining and managing different types of ham radio awards.
 *   Allowing activators to announce their planned operations for specific award references.
 *   Enabling hunters (participants) to log their contacts against these activations.
 *   Tracking progress towards achieving awards.
@@ -76,4 +76,4 @@ This project is open source and contributions are welcome. Please refer to `CONT
 
 ## License
 
-This project will be licensed under the [AGPLv3](https://www.gnu.org/licenses/agpl-3.0.en.html#license-text).
+This project will be licensed under the [AGPLv3](https://www.gnu.org/licenses/agpl-3.0.en.html#license-text) license.
