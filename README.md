@@ -2,7 +2,7 @@
 
 Open Ham Awards is an open-source platform designed to help ham radio clubs and operators manage, participate in, and track progress for various radio activity awards.
 
-**Status**: Early Development :construction:
+**Project Status**: Early Development :construction:
 
 ## Project Goal
 
