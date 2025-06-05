@@ -1,0 +1,21 @@
+{
+  "name": "open-ham-awards",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "pnpm run --parallel dev",
+    "dev:web": "pnpm --filter @open-ham-awards/web dev",
+    "dev:api": "pnpm --filter @open-ham-awards/api start:dev",
+    "build": "pnpm run --recursive build",
+    "build:web": "pnpm --filter @open-ham-awards/web build",
+    "build:api": "pnpm --filter @open-ham-awards/api build",
+    "build:shared-types": "pnpm --filter @open-ham-awards/shared-types build",
+    "lint": "pnpm run --recursive lint",
+    "test": "pnpm run --recursive test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.11.1"
+}
