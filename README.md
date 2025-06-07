@@ -36,6 +36,10 @@ This project aims to consolidate existing systems and provide new functionalitie
 *   **Award Progress Tracking:**
     *   Users can view their progress towards achieving specific award instances based on confirmed contacts.
 
+## Data Model
+
+The proposed data model can be found the [documentation folder](docs/OpenHamAwards-Data-Model.pdf).
+
 ## Tech Stack (Initial)
 
 *   **Frontend:** Next.js (React)
