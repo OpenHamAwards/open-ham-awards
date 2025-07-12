@@ -5,14 +5,14 @@ import { User as DomainUser } from '../../domain/user.entity';
 @Injectable()
 export class UserMapper {
   static toDomain(prismaUser: PrismaUser): DomainUser {
-    const domainUser = new DomainUser(
-      prismaUser.id,
-      prismaUser.email,
-      prismaUser.passwordHash,
-      prismaUser.fullName,
-      prismaUser.createdAt,
-      prismaUser.role,
-    );
+    const domainUser = new DomainUser({
+      id: prismaUser.id,
+      email: prismaUser.email,
+      passwordHash: prismaUser.passwordHash,
+      fullName: prismaUser.fullName,
+      role: prismaUser.role,
+      createdAt: prismaUser.createdAt,
+    });
 
     return domainUser;
   }

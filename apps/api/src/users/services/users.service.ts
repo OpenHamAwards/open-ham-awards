@@ -5,8 +5,8 @@ import {
 } from '../domain/user.repository.interface';
 import { User } from '../domain/user.entity';
 import { CreateUserDto } from './dto/create-user.dto';
+
 import bcrypt from 'bcrypt';
-import { randomUUID } from 'crypto';
 
 @Injectable()
 export class UsersService {
@@ -23,15 +23,14 @@ export class UsersService {
       throw new ConflictException('User with this email already exists.');
     }
 
+    // TODO: Move to its own adapter
     const passwordHash: string = await bcrypt.hash(dto.password, 10);
 
-    const newUser = new User(
-      randomUUID(),
-      dto.email,
-      dto.fullName,
+    const newUser = new User({
+      email: dto.email,
       passwordHash,
-      new Date(),
-    );
+      fullName: dto.fullName,
+    });
     const savedUser = await this.userRepository.save(newUser);
 
     const { passwordHash: _, ...result } = savedUser;
