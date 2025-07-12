@@ -17,5 +17,14 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@10.11.1"
+  "packageManager": "pnpm@10.11.1",
+  "dependencies": {
+    "@nestjs/typeorm": "^11.0.0",
+    "reflect-metadata": "^0.2.2",
+    "sqlite3": "^5.1.7",
+    "typeorm": "^0.3.25"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.13"
+  }
 }
