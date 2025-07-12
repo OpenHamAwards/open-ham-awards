@@ -1,3 +1,4 @@
+
 # Node / PNPM
 node_modules
 node_modules/
@@ -18,7 +19,7 @@ pids
 # Build artifacts / Distribution folders (common names)
 dist/
 build/
-out/
+api/out/
 .next/
 .DS_Store
 *.tmp
@@ -59,3 +60,4 @@ coverage/
 
 # Next
 next-env.d.ts
+
