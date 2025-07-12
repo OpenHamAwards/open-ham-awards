@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { User as PrismaUser } from '@prisma/client';
-import { User as DomainUser, UserRole } from '../../domain/user.entity';
+import { User as PrismaUser, Prisma } from '@open-ham-awards/db';
+import { User as DomainUser } from '../../domain/user.entity';
 
 @Injectable()
 export class UserMapper {
@@ -10,14 +10,14 @@ export class UserMapper {
       prismaUser.email,
       prismaUser.passwordHash,
       prismaUser.fullName,
-      prismaUser.role as UserRole,
-      prismaUser.createdAt
+      prismaUser.createdAt,
+      prismaUser.role,
     );
 
     return domainUser;
   }
 
-  static toPersistence(domainUser: DomainUser) {
+  static toPersistence(domainUser: DomainUser): Prisma.UserCreateInput {
     return {
       id: domainUser.id,
       email: domainUser.email,
@@ -28,4 +28,3 @@ export class UserMapper {
     };
   }
 }
-

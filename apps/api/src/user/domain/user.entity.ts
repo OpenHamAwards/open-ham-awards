@@ -1,7 +1,6 @@
-export enum UserRole {
-  REGISTERED_USER = 'registered_user',
-  ADMIN = 'admin',
-}
+import { UserRole } from '@open-ham-awards/db';
+
+export { UserRole };
 
 export class User {
   id: string;
@@ -16,14 +15,14 @@ export class User {
     email: string,
     passwordHash: string,
     fullName: string,
-    role: UserRole,
     createdAt: Date,
+    role?: UserRole,
   ) {
     this.id = id;
     this.email = email;
     this.passwordHash = passwordHash;
     this.fullName = fullName;
-    this.role = role;
+    this.role = role || UserRole.REGISTERED_USER;
     this.createdAt = createdAt;
   }
 }

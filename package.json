@@ -12,7 +12,8 @@
     "build:api": "pnpm --filter @open-ham-awards/api build",
     "build:shared-types": "pnpm --filter @open-ham-awards/shared-types build",
     "lint": "pnpm run --recursive lint",
-    "test": "pnpm run --recursive test"
+    "test": "pnpm run --recursive test",
+    "db:migrate": "pnpm --filter @openhamawards/db run db:migrate"
   },
   "keywords": [],
   "author": "",

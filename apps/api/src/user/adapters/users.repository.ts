@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from '@open-ham-awards/db';
 import { IUserRepository } from '../domain/user.repository.interface';
 import { User as DomainUser } from '../domain/user.entity';
 import { UserMapper } from './mappers/user.mapper';
@@ -17,9 +17,10 @@ export class PrismaUserRepository implements IUserRepository {
   }
 
   async save(user: DomainUser): Promise<DomainUser> {
-    const persistenceData = UserMapper.toPersistence(user);
+    const dataForCreate = UserMapper.toPersistence(user);
+
     const newPrismaUser = await this.prisma.user.create({
-      data: persistenceData,
+      data: dataForCreate,
     });
     return UserMapper.toDomain(newPrismaUser);
   }

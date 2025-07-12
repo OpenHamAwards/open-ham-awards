@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from '@open-ham-awards/db';
 import { UsersController } from './adapters/users.controller';
 import { PrismaUserRepository } from './adapters/users.repository';
 import { USER_REPOSITORY } from './domain/user.repository.interface';
