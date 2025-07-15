@@ -28,6 +28,7 @@ export class UserMapper {
       role: domainUser.role,
       isActive: domainUser.isActive,
       createdAt: domainUser.createdAt,
+      updatedAt: domainUser.updatedAt,
     };
   }
 }
