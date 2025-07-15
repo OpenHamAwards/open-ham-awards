@@ -13,6 +13,7 @@ export class UserMapper {
       role: prismaUser.role,
       isActive: prismaUser.isActive,
       createdAt: prismaUser.createdAt,
+      updatedAt: prismaUser.updatedAt,
     });
 
     return domainUser;
