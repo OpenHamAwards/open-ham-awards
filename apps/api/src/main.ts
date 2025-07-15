@@ -1,10 +1,12 @@
-import { NestFactory } from '@nestjs/core';
+import { NestFactory, Reflector } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { ValidationPipe } from '@nestjs/common';
+import {
+  ClassSerializerInterceptor,
+  INestApplication,
+  ValidationPipe,
+} from '@nestjs/common';
 
-async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-
+export function registerGlobalPipes(app: INestApplication) {
   app.useGlobalPipes(
     new ValidationPipe({
       // This ensures that any extra properties sent in the request body are stripped out.
@@ -22,6 +24,22 @@ async function bootstrap() {
       },
     }),
   );
+}
+
+export function registerGlobals(app: INestApplication) {
+  app.useGlobalInterceptors(
+    new ClassSerializerInterceptor(app.get(Reflector), {
+      strategy: 'excludeAll',
+      excludeExtraneousValues: true,
+    }),
+  );
+}
+
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
+
+  registerGlobalPipes(app);
+  registerGlobals(app);
 
   await app.listen(process.env.PORT ?? 3000);
 }
