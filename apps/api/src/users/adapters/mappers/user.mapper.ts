@@ -11,6 +11,7 @@ export class UserMapper {
       passwordHash: prismaUser.passwordHash,
       fullName: prismaUser.fullName,
       role: prismaUser.role,
+      isActive: prismaUser.isActive,
       createdAt: prismaUser.createdAt,
     });
 
@@ -24,6 +25,7 @@ export class UserMapper {
       passwordHash: domainUser.passwordHash,
       fullName: domainUser.fullName,
       role: domainUser.role,
+      isActive: domainUser.isActive,
       createdAt: domainUser.createdAt,
     };
   }

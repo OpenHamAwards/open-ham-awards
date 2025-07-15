@@ -3,7 +3,7 @@ import {
   IUserRepository,
   USER_REPOSITORY,
 } from '../domain/user.repository.interface';
-import { User } from '../domain/user.entity';
+import { User as DomainUser } from '../domain/user.entity';
 import { CreateUserDto } from './dto/create-user.dto';
 
 import bcrypt from 'bcrypt';
@@ -15,9 +15,7 @@ export class UsersService {
     private readonly userRepository: IUserRepository,
   ) {}
 
-  async createUser(
-    dto: CreateUserDto,
-  ): Promise<Omit<User, 'passwordHash'> | undefined> {
+  async createUser(dto: CreateUserDto): Promise<DomainUser> {
     const existingUser = await this.userRepository.findByEmail(dto.email);
     if (existingUser) {
       throw new ConflictException('User with this email already exists.');
@@ -26,15 +24,17 @@ export class UsersService {
     // TODO: Move to its own adapter
     const passwordHash: string = await bcrypt.hash(dto.password, 10);
 
-    const newUser = new User({
+    const newUser = new DomainUser({
       email: dto.email,
       passwordHash,
       fullName: dto.fullName,
+      isActive: true,
     });
-    const savedUser = await this.userRepository.save(newUser);
 
-    const { passwordHash: _, ...result } = savedUser;
+    return this.userRepository.save(newUser);
+  }
 
-    return result;
+  async getAllUsers(): Promise<DomainUser[]> {
+    return this.userRepository.getAllUsers();
   }
 }

@@ -11,6 +11,7 @@ export class User {
   role: UserRole;
   createdAt: Date;
   updatedAt: Date;
+  isActive: boolean;
 
   constructor({
     id,
@@ -18,6 +19,7 @@ export class User {
     passwordHash,
     fullName,
     role,
+    isActive,
     createdAt,
     updatedAt,
   }: {
@@ -26,6 +28,7 @@ export class User {
     passwordHash: string;
     fullName: string;
     role?: UserRole;
+    isActive?: boolean;
     createdAt?: Date;
     updatedAt?: Date;
   }) {
@@ -38,5 +41,7 @@ export class User {
     const now = new Date();
     this.createdAt = createdAt || now;
     this.updatedAt = updatedAt || now;
+
+    this.isActive = isActive || false;
   }
 }
