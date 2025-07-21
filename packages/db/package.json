@@ -1,0 +1,17 @@
+{
+  "name": "@open-ham-awards/db",
+  "version": "1.0.0",
+  "main": "./generated/client/index.js",
+  "types": "./generated/client/index.d.ts",
+  "scripts": {
+    "db:migrate": "dotenv -e ../../.env -- prisma migrate dev",
+    "db:generate": "dotenv -e ../../.env -- prisma generate"
+  },
+  "devDependencies": {
+    "dotenv-cli": "^8.0.0",
+    "prisma": "^6.11.1"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.11.1"
+  }
+}

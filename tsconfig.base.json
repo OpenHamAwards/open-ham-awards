@@ -10,7 +10,7 @@
     "composite": true,
     "baseUrl": ".",
     "paths": {
-      "@ham-radio-club/*": ["packages/*/src"] // Allows importing like @ham-radio-club/shared-types
+      "@open-ham-awards/*": ["packages/*/src"]
     }
   }
 }

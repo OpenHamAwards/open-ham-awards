@@ -17,9 +17,10 @@
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": false,
     "strictBindCallApply": false,
-    "noFallthroughCasesInSwitch": false
+    "noFallthroughCasesInSwitch": false,
+    "strictPropertyInitialization": false
   },
   "references": [{ "path": "../../packages/shared-types" }],
   "baseUrl": ".", 
-  "paths": { "@/*": ["src/*"], "@ham-radio-club/*": ["../../packages/*/src"] }
+  "paths": { "@/*": ["src/*"], "@open-ham-awards/*": ["../../packages/*/src"] }
 }
