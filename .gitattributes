@@ -1,0 +1,46 @@
+# ---- Gestión universal de texto y saltos de línea ----
+*         text=auto
+
+# Forzar saltos de línea LF para archivos de código (ideal para proyectos JS/TS/Node)
+*.js      text eol=lf
+*.jsx     text eol=lf
+*.ts      text eol=lf
+*.tsx     text eol=lf
+*.json    text eol=lf
+*.css     text eol=lf
+*.scss    text eol=lf
+*.yml     text eol=lf
+*.yaml    text eol=lf
+*.md      text eol=lf
+
+# ---- Archivos binarios: no hacer normalización ni diff ----
+*.png     binary
+*.jpg     binary
+*.jpeg    binary
+*.gif     binary
+*.ico     binary
+*.svg     binary
+*.pdf     binary
+*.zip     binary
+*.gz      binary
+*.tar     binary
+*.mp3     binary
+*.mp4     binary
+*.mov     binary
+
+# ---- Ignorar archivos al exportar (git archive) ----
+/.env         export-ignore
+*.env.*       export-ignore
+/.gitignore   export-ignore
+/README.md    export-ignore
+/.github/     export-ignore
+/tests/       export-ignore
+/__mocks__/   export-ignore
+/coverage/    export-ignore
+
+# ---- Filtros personalizados (si los defines)
+# *.txt filter=miFiltroPersonalizado
+
+# ---- Otros útiles ----
+*.docx diff=astextplain
+*.pdf diff=pdf

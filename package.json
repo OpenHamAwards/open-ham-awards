@@ -13,10 +13,17 @@
     "build:shared-types": "pnpm --filter @open-ham-awards/shared-types build",
     "lint": "pnpm run --recursive lint",
     "test": "pnpm run --recursive test",
-    "db:migrate": "pnpm --filter @open-ham-awards/db run db:migrate"
+    "db:migrate": "pnpm --filter @open-ham-awards/db run db:migrate",
+    "prepare": "husky"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@10.11.1"
+  "packageManager": "pnpm@10.11.1",
+  "devDependencies": {
+    "husky": "^9.1.7"
+  },
+  "dependencies": {
+    "git-install-hook": "^0.0.10"
+  }
 }
