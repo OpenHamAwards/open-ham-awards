@@ -14,14 +14,19 @@
     "lint": "pnpm run --recursive lint",
     "test": "pnpm run --recursive test",
     "db:migrate": "pnpm --filter @open-ham-awards/db run db:migrate",
-    "prepare": "husky"
+    "prepare": "husky",
+    "format": "prettier --write ."
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "packageManager": "pnpm@10.11.1",
   "devDependencies": {
-    "husky": "^9.1.7"
+    "eslint": "^9.32.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.3",
+    "husky": "^9.1.7",
+    "prettier": "^3.6.2"
   },
   "dependencies": {
     "git-install-hook": "^0.0.10"
