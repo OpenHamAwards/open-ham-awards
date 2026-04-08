@@ -86,14 +86,15 @@ export default function LandingPage() {
             <h1 className="text-4xl font-black leading-tight tracking-tight sm:text-5xl">
               Run your club&apos;s{" "}
               <span className="text-amber-500">Ham Radio</span> contests{" "}
-              <span className="text-amber-400">without the bloat.</span>
+              <span className="text-amber-400">with ease.</span>
             </h1>
 
             {/* Subtext */}
             <p className="mt-5 max-w-lg font-mono text-sm leading-relaxed text-zinc-400">
-              The professional open-source platform for managing rankings,
-              activators, and automated log cross-validation. Precision
-              engineered for the amateur radio community.
+              A simple, open-source tool for managing awards and tracking
+              progress. We&apos;ve taken the stress out of checking logs and
+              validating contacts so your club can spend more time on the
+              air.
             </p>
 
             {/* Waitlist form */}
@@ -120,8 +121,8 @@ export default function LandingPage() {
             </h3>
             <p className="mt-2 font-mono text-xs leading-relaxed text-zinc-400">
               Easily define award parameters, locations, and scoring
-              criteria for your specific club event. No hardcoded
-              logic, total flexibility.
+              criteria for your specific club event. Total flexibility
+              to fit your club&apos;s specific rules.
             </p>
           </HardwarePanel>
 
@@ -134,9 +135,9 @@ export default function LandingPage() {
               ACTIVATOR ANNOUNCEMENTS
             </h3>
             <p className="mt-2 font-mono text-xs leading-relaxed text-zinc-400">
-              Operators schedule planned activations directly on
-              the platform, building hype for the hunters across
-              the bands.
+              Coordinate upcoming activity. Operators can share their
+              planned schedules in advance so hunters know which bands
+              to monitor for the next contact.
             </p>
           </HardwarePanel>
 
@@ -146,12 +147,12 @@ export default function LandingPage() {
               <ChartIcon />
             </div>
             <h3 className="font-mono text-sm font-bold tracking-wide text-zinc-100">
-              LIVE PROGRESS
+              PROGRESS TRACKING
             </h3>
             <p className="mt-2 font-mono text-xs leading-relaxed text-zinc-400">
-              Dynamic ranking boards and live leaderboards
-              with sub-second update cycles for ultimate
-              award transparency.
+              See results as logs are uploaded. Hunters can follow
+              their own progress and see the club rankings update
+              as participants submit their contacts.
             </p>
             {/* Mock leaderboard */}
             <div className="mt-4 space-y-1.5 border-t border-zinc-700 pt-3 font-mono text-xs">
@@ -201,7 +202,7 @@ export default function LandingPage() {
               <div className="shrink-0 rounded-sm border border-zinc-700 bg-black/80 px-4 py-3 font-mono text-[11px] leading-relaxed lg:w-[340px]">
                 <p className="text-zinc-500">
                   VALIDATING:{" "}
-                  <span className="text-zinc-300">ADIF_UPLOAD_2024_03.LOG</span>
+                  <span className="text-zinc-300">ADIF_UPLOAD_2026_03.LOG</span>
                 </p>
                 <p className="mt-1.5 text-zinc-500">
                   Parsing QSO: XX1RF-ZZ3HAM (20M/CW) ...{" "}
@@ -257,12 +258,14 @@ export default function LandingPage() {
               MANAGED CLOUD SERVICE
             </h3>
             <p className="font-mono text-xs leading-relaxed text-zinc-400">
-              The core engine is and always will be open source and free to
-              self-host. Deploy it on your own hardware, your own terms.
-              For clubs that want zero operational overhead, a Managed Cloud
-              service will be available post-product build — handling
-              infrastructure, backups, and updates so you can focus on
-              what matters: running contests.
+              The core engine is and always will be{" "}
+              <span className="text-amber-400">open source</span> and{" "}
+              <span className="text-amber-400">free to self-host</span>.
+              Deploy it on your own hardware, your own terms.
+              For clubs that want to get started instantly without worrying
+              about servers, backups, or updates, a Managed Cloud service
+              will be available post-product build. We handle the tech so
+              you can focus on the contest.
             </p>
           </HardwarePanel>
         </div>
