@@ -1,21 +1,21 @@
 # 📻 Open Ham Awards
 **The lightweight, open-source contest and award management platform for Amateur Radio clubs.**
 
-*Project Status: Early Development 🚧 | [Join the Waitlist for Early Access](tbd)*
+*Project Status: Early Development 🚧 | [Join the Waitlist for Early Access](http://openhamawards.com)*
 
-### **The Problem**
+## **The Problem**
 Running a club contest or award program today usually means wrestling with bloated, legacy enterprise software or drowning in messy Excel sheets and emailed ADIF files. 
 
-### **The Solution**
+## **The Solution**
 **Open Ham Awards** is built from the ground up to give local clubs and contest managers a modern, frictionless way to host, track, and validate radio activity awards. No bloat, no confusing UI—just the tools you need to run a great event. 
 
-### **Core MVP Features**
+## **Core MVP Features**
 * **🏁 Custom Award Engine:** Easily define award parameters, locations (references), and scoring criteria for your specific club event.
 * **📡 Activator Announcements:** Operators can schedule and announce their planned activations directly on the platform, building hype for the hunters.
 * **✅ Painless Validation:** Activators submit logs/evidence, and hunters submit their contacts. The platform provides a streamlined dashboard for managers to validate activities and cross-check logs without the headache.
 * **🏆 Live Progress Tracking:** Hunters get a dedicated dashboard to track their validated contacts and see their real-time progress toward the award.
 
-### **Why Open Source?**
+## **Why Open Source?**
 Built by engineers and ham operators. We believe club infrastructure should be transparent, extensible, and free from vendor lock-in.
 
 ## 💻 For Developers & Contributors
