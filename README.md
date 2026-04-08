@@ -1,85 +1,63 @@
-# Open Ham Awards
+# 📻 Open Ham Awards
+**The lightweight, open-source contest and award management platform for Amateur Radio clubs.**
 
-Open Ham Awards is an open-source platform designed to help ham radio clubs and operators manage, participate in, and track progress for various radio activity awards.
+*Project Status: Early Development 🚧 | [Join the Waitlist for Early Access](https://openhamawards.com)*
 
-**Project Status**: Early Development :construction:
+## **The Problem**
+Running a club contest or award program today usually means wrestling with bloated, legacy enterprise software or drowning in messy Excel sheets and emailed ADIF files. 
 
-## Project Goal
+## **The Solution**
+**Open Ham Awards** is built from the ground up to give local clubs and contest managers a modern, frictionless way to host, track, and validate radio activity awards. No bloat, no confusing UI—just the tools you need to run a great event. 
 
-The main goal is to provide a modern, user-friendly, and extensible system for:
+## **Core MVP Features**
+* **🏁 Custom Award Engine:** Easily define award parameters, locations (references), and scoring criteria for your specific club event.
+* **📡 Activator Announcements:** Operators can schedule and announce their planned activations directly on the platform, building hype for the hunters.
+* **✅ Painless Validation:** Activators submit logs/evidence, and hunters submit their contacts. The platform provides a streamlined dashboard for managers to validate activities and cross-check logs without the headache.
+* **🏆 Live Progress Tracking:** Hunters get a dedicated dashboard to track their validated contacts and see their real-time progress toward the award.
 
-*   Defining and managing different types of ham radio awards.
-*   Allowing activators to announce their planned operations for specific award references.
-*   Enabling hunters (participants) to log their contacts against these activations.
-*   Tracking progress towards achieving awards.
-*   Facilitating the validation of activities and contacts.
+## **Why Open Source?**
+Built by engineers and ham operators. We believe club infrastructure should be transparent, extensible, and free from vendor lock-in.
 
-This project aims to consolidate existing systems and provide new functionalities for the benefit of radio amateurs.
+## 💻 For Developers & Contributors
 
-## Core Features (MVP Focus)
+This repository is structured as a pnpm monorepo, separating the Next.js frontend client from the Nest.JS backend API.
 
-*   **User Registration & Authentication:** Secure access for radio operators.
-*   **Award Management:**
-    *   Defining award categories.
-    *   Defining specific award types.
-    *   Managing award "instances".
-    *   Defining and managing references (locations, entities) associated with awards.
-*   **Activity Lifecycle:**
-    *   Activators can announce planned activities for an award instance at a specific reference.
-    *   Announcements are reviewed and approved/rejected by administrators/award managers.
-    *   Approved activities are visible to all users.
-    *   Activators can submit evidence (logs, photos) for their completed activities.
-    *   Administrators/award managers validate submitted evidence.
-*   **Participation & Logging:**
-    *   Registered users (hunters) can submit their contact logs against validated activities.
-    *   Users can view their submitted logs and their validation status.
-*   **Award Progress Tracking:**
-    *   Users can view their progress towards achieving specific award instances based on confirmed contacts.
+### **Tech Stack**
+* **Frontend:** Next.js (React), Tailwind CSS
+* **Backend API:** Nest.JS (Node.js, TypeScript)
+* **Database:** PostgreSQL (planned)
+* **Monorepo Management:** pnpm workspaces
 
-## Data Model
+### **Domain Model**
+The proposed domain model and API contracts can be found in the [`/docs`](docs/) folder.
 
-The proposed data model can be found the [documentation folder](docs/OpenHamAwards-Data-Model.pdf).
+### **Getting Started (Development)**
+Clone the repository:
 
-## Tech Stack (Initial)
+```bash
+git clone https://github.com/OpenHamAwards/open-ham-awards.git
+cd open-ham-awards
+```
 
-*   **Frontend:** Next.js (React)
-*   **Backend API:** Nest.JS (Node.js, TypeScript)
-*   **Database:** PostgreSQL (planned)
-*   **Monorepo Management:** pnpm workspaces
+Install dependencies:
+```bash
+pnpm install
+```
 
-## Getting Started (Development)
+Run development servers:
+```bash
+# Run both frontend and backend concurrently
+pnpm dev
 
-This is a monorepo managed with pnpm.
+# Run frontend (Next.js) only
+pnpm dev:web
 
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/OpenHamAwards/open-ham-awards.git
-    cd open-ham-awards
-    ```
-2.  **Install dependencies:**
-    ```bash
-    pnpm install
-    ```
-3.  **Run development servers:**
-    *   To run both frontend and backend concurrently:
-        ```bash
-        pnpm dev
-        ```
-    *   To run frontend (Next.js) only:
-        ```bash
-        pnpm dev:web
-        ```
-    *   To run backend (Nest.JS) only:
-        ```bash
-        pnpm dev:api
-        ```
+# Run backend (Nest.JS) only
+pnpm dev:api
+```
+*(Further details on database setup, environment variables, etc., will be added as development progresses.)*
 
-(Further details on database setup, environment variables, etc., will be added as development progresses.)
+### **Contributing & License**
 
-## Contributing
-
-This project is open source and contributions are welcome. Please refer to `CONTRIBUTING.md` (to be created) for guidelines.
-
-## License
-
-This project will be licensed under the [AGPLv3](https://www.gnu.org/licenses/agpl-3.0.en.html#license-text) license.
+This project is open source — contributor guidelines coming soon.
+Licensed under the **AGPLv3** license.
