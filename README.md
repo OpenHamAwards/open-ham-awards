@@ -1,7 +1,7 @@
 # 📻 Open Ham Awards
 **The lightweight, open-source contest and award management platform for Amateur Radio clubs.**
 
-*Project Status: Early Development 🚧 | [Join the Waitlist for Early Access](http://openhamawards.com)*
+*Project Status: Early Development 🚧 | [Join the Waitlist for Early Access](https://openhamawards.com)*
 
 ## **The Problem**
 Running a club contest or award program today usually means wrestling with bloated, legacy enterprise software or drowning in messy Excel sheets and emailed ADIF files. 
@@ -59,5 +59,5 @@ pnpm dev:api
 
 ### **Contributing & License**
 
-This project is open source. Please refer to `CONTRIBUTING.md` (to be created) for guidelines. 
+This project is open source — contributor guidelines coming soon.
 Licensed under the **AGPLv3** license.
