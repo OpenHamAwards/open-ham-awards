@@ -300,7 +300,7 @@ classDiagram
 
 ## MVP Scoring Flow
 
-```
+```text
 Admin confirms QSOClaim via API
         │
         ▼
