@@ -26,7 +26,7 @@ pnpm build
 
 ## Structure
 
-```
+```text
 src/
   app/
     layout.tsx       # Root layout — fonts, metadata, global styles

@@ -43,7 +43,7 @@ export function WaitlistForm() {
 
   if (submitted) {
     return (
-      <div className="mt-8 rounded-sm border border-emerald-700/50 bg-emerald-900/20 px-4 py-3 font-mono text-sm text-emerald-400">
+      <div role="status" aria-live="polite" aria-atomic="true" className="mt-8 rounded-sm border border-emerald-700/50 bg-emerald-900/20 px-4 py-3 font-mono text-sm text-emerald-400">
         REGISTRATION RECEIVED — YOU&apos;RE ON THE LIST, {callsign.toUpperCase() || "OPERATOR"}.
       </div>
     );
@@ -60,6 +60,7 @@ export function WaitlistForm() {
           value={callsign}
           onChange={(e) => setCallsign(e.target.value)}
           placeholder="CALLSIGN"
+          aria-label="Callsign"
           required
           minLength={3}
           maxLength={10}
@@ -70,6 +71,7 @@ export function WaitlistForm() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="your@email.net"
+          aria-label="Email address"
           required
           className="h-12 flex-1 rounded-sm border border-zinc-700 bg-black px-4 font-mono text-sm text-zinc-200 placeholder-zinc-600 outline-none transition focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/30 sm:rounded-none"
         />
