@@ -23,6 +23,7 @@ See [`docs/DOMAIN_MODEL.md`](docs/DOMAIN_MODEL.md) for the complete domain model
 ## 5. System Components
 
 ### 5.1. Module Boundaries
+
 | Module | Responsibility |
 | :--- | :--- |
 | **Identity** | Manages Users, Stations (Callsigns), and "Upload-on-behalf" permissions. |
@@ -48,8 +49,13 @@ To handle $O(N^2)$ cross-checking without locking the database:
 1.  **Claimed:** Immediate calculation based only on the uploaded log. Used for live scoreboards.
 2.  **Verified:** Batch-processed cross-checking (Station A $\leftrightarrow$ Station B) triggered after contest close.
 
+These scoring states represent the data integrity layer and are orthogonal to the `ProgressStatus` found in the Domain Model:
+* **Claimed** contacts provide the raw data for `IN_PROGRESS` tracking and "unofficial" leaderboards.
+* **Verified** contacts are the mandatory trigger for moving a `UserAwardProgress` record from `IN_PROGRESS` to `ACHIEVED`.
+* An award is only `AWARDED` after the verification batch process completes the $O(N^2)$ cross-check.
+
 ### 6.3. Rule Snapshotting
-Contest rules are stored as **Immutable Templates**. When a `ContestSession` is created, it takes a **Deep Copy (JSON Snapshot)** of the rules. This ensures that changes to the 2026 rules do not retroactively break the scoring of 2025 logs.
+Contest rules are stored as **Immutable Templates**. When an `AwardInstance` is created, it takes a **Deep Copy (JSON Snapshot)** of the rules. This ensures that changes to the 2026 rules do not retroactively break the scoring of 2025 logs.
 
 ## 7. Development Workflow (AI-Agentic)
 * **Domain First:** Always implement logic in `packages/domain` before creating API endpoints.
