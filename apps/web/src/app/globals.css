@@ -4,7 +4,7 @@
   --color-background: #18181b;
   --color-foreground: #e4e4e7;
   --color-amber-glow: #f59e0b;
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-inter);
   --font-mono: var(--font-geist-mono);
 }
 

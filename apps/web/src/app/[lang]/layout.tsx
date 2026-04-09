@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import "../globals.css";
 
 const inter = Inter({
-  variable: "--font-geist-sans",
+  variable: "--font-inter",
   subsets: ["latin"],
   weight: ["400", "600", "700", "900"],
 });
