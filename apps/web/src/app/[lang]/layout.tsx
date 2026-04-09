@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist_Mono, Inter } from "next/font/google";
-import "./globals.css";
+import { locales, hasLocale } from "./dictionaries";
+import { notFound } from "next/navigation";
+import "../globals.css";
 
 const inter = Inter({
   variable: "--font-geist-sans",
@@ -19,13 +21,20 @@ export const metadata: Metadata = {
     "The professional open-source platform for managing Ham Radio rankings, activators, and automated log cross-validation.",
 };
 
-export default function RootLayout({
+export async function generateStaticParams() {
+  return locales.map((lang) => ({ lang }));
+}
+
+export default async function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+  params,
+}: LayoutProps<"/[lang]">) {
+  const { lang } = await params;
+
+  if (!hasLocale(lang)) notFound();
+
   return (
-    <html lang="en" className={`${inter.variable} ${geistMono.variable}`}>
+    <html lang={lang} className={`${inter.variable} ${geistMono.variable}`}>
       <body className="min-h-screen bg-zinc-900 text-zinc-200 antialiased">
         {children}
       </body>

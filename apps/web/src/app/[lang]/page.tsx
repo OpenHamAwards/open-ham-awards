@@ -1,7 +1,9 @@
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { HardwarePanel } from "@/components/hardware-panel";
 import { SpectrumAnalyzer } from "@/components/spectrum-analyzer";
 import { WaitlistForm } from "@/components/waitlist-form";
+import { getDictionary, hasLocale } from "./dictionaries";
 
 function AwardIcon() {
   return (
@@ -35,15 +37,22 @@ function ChartIcon() {
   );
 }
 
-export default function LandingPage() {
+export default async function LandingPage({ params }: PageProps<"/[lang]">) {
+  const { lang } = await params;
+
+  if (!hasLocale(lang)) notFound();
+
+  const dict = await getDictionary(lang);
+  const { header: h, hero, features: f, specs: s, footer: ft } = dict;
+
   return (
     <div className="min-h-screen bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-zinc-800 via-zinc-950 to-black font-sans">
       {/* ─── HEADER ─── */}
       <header className="border-b border-zinc-800 bg-zinc-900/95 backdrop-blur">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-8 py-3 sm:px-12">
           {/* Logo */}
-          <Link href="/" className="whitespace-nowrap font-mono text-xs font-bold tracking-widest text-amber-500 md:text-sm">
-            OPEN HAM AWARDS
+          <Link href={`/${lang}`} className="whitespace-nowrap font-mono text-xs font-bold tracking-widest text-amber-500 md:text-sm">
+            {h.logo}
           </Link>
 
           {/* Nav */}
@@ -54,7 +63,7 @@ export default function LandingPage() {
               rel="noopener noreferrer"
               className="whitespace-nowrap px-2 py-1.5 text-zinc-500 transition hover:text-zinc-300 md:px-3"
             >
-              OP: EA5JMC
+              {h.opLabel}
             </a>
             <a
               href="https://github.com/OpenHamAwards/open-ham-awards"
@@ -62,7 +71,7 @@ export default function LandingPage() {
               rel="noopener noreferrer"
               className="whitespace-nowrap px-2 py-1.5 text-zinc-500 transition hover:text-zinc-300 md:px-3"
             >
-              CONTRIBUTE
+              {h.contribute}
             </a>
           </nav>
 
@@ -76,26 +85,23 @@ export default function LandingPage() {
           <div className="flex flex-col justify-center">
             {/* Headline */}
             <h1 className="text-4xl font-black leading-tight tracking-tight md:text-5xl lg:text-6xl">
-              Run your club&apos;s{" "}
-              <span className="text-amber-500">Ham Radio</span> contests{" "}
-              <span className="text-amber-400">with ease.</span>
+              {hero.headlinePre}{" "}
+              <span className="text-amber-500">{hero.headlineHighlight}</span> {hero.headlineMid}{" "}
+              <span className="text-amber-400">{hero.headlineTail}</span>
             </h1>
 
             {/* Subtext */}
             <p className="mt-3 max-w-[600px] font-mono text-base leading-relaxed text-zinc-400 md:text-xl">
-              A simple, open-source tool for managing awards and tracking
-              progress. We&apos;ve taken the stress out of checking logs and
-              validating contacts so your club can spend more time on the
-              air.
+              {hero.subtext}
             </p>
 
             {/* Waitlist form */}
-            <WaitlistForm />
+            <WaitlistForm strings={dict.waitlist} />
           </div>
 
           {/* Right column — Spectrum Analyzer */}
           <div className="flex items-center">
-            <SpectrumAnalyzer />
+            <SpectrumAnalyzer strings={dict.spectrum} />
           </div>
         </div>
       </section>
@@ -109,12 +115,10 @@ export default function LandingPage() {
               <AwardIcon />
             </div>
             <h3 className="mb-3 font-mono text-sm font-bold tracking-wide text-zinc-100">
-              CUSTOM AWARD ENGINE
+              {f.awardEngineTitle}
             </h3>
             <p className="mt-1.5 font-mono text-sm leading-snug text-zinc-400">
-              Easily define award parameters, locations, and scoring
-              criteria for your specific club event. Total flexibility
-              to fit your club&apos;s specific rules.
+              {f.awardEngineDesc}
             </p>
           </HardwarePanel>
 
@@ -124,12 +128,10 @@ export default function LandingPage() {
               <RadioIcon />
             </div>
             <h3 className="mb-3 font-mono text-sm font-bold tracking-wide text-zinc-100">
-              ACTIVATOR ANNOUNCEMENTS
+              {f.activatorTitle}
             </h3>
             <p className="mt-1.5 font-mono text-sm leading-snug text-zinc-400">
-              Coordinate upcoming activity. Operators can share their
-              planned schedules in advance so hunters know which bands
-              to monitor for the next contact.
+              {f.activatorDesc}
             </p>
           </HardwarePanel>
 
@@ -139,12 +141,10 @@ export default function LandingPage() {
               <ChartIcon />
             </div>
             <h3 className="mb-3 font-mono text-sm font-bold tracking-wide text-zinc-100">
-              PROGRESS TRACKING
+              {f.progressTitle}
             </h3>
             <p className="mt-1.5 font-mono text-sm leading-snug text-zinc-400">
-              See results as logs are uploaded. Hunters can follow
-              their own progress and see the club rankings update
-              as participants submit their contacts.
+              {f.progressDesc}
             </p>
             {/* Mock leaderboard */}
             <div className="mt-3 space-y-1.5 border-t border-zinc-800 pt-3 font-mono text-sm">
@@ -162,7 +162,7 @@ export default function LandingPage() {
                     {entry.rank}.{" "}
                     <span className="text-zinc-300">{entry.call}</span>
                   </span>
-                  <span className="text-amber-500/80">{entry.pts} PTS</span>
+                  <span className="text-amber-500/80">{entry.pts} {f.leaderboardUnit}</span>
                 </div>
               ))}
             </div>
@@ -177,39 +177,35 @@ export default function LandingPage() {
                   <CheckCircleIcon />
                 </div>
                 <h3 className="mb-3 font-mono text-sm font-bold tracking-wide text-zinc-100">
-                  PAINLESS VALIDATION
+                  {f.validationTitle}
                 </h3>
                 <p className="mt-1.5 font-mono text-sm leading-snug text-zinc-400">
-                  Stop chasing log formatting problems. Our automated engine
-                  cross-references hunter and activator logs to generate
-                  validated award and contest tracking instantly. Flagging
-                  discrepancies with forensic precision. No more chasing ADIF
-                  errors via email thread.
+                  {f.validationDesc}
                 </p>
               </div>
 
               {/* Right — terminal-style validation output */}
               <div className="shrink-0 rounded-none border border-zinc-800 bg-black/80 px-4 py-3 font-mono text-[10px] leading-tight sm:text-xs md:text-sm md:leading-snug lg:w-[420px]">
                 <p className="text-zinc-500">
-                  VALIDATING:{" "}
-                  <span className="text-zinc-300">ADIF_UPLOAD_2026_03.LOG</span>
+                  {f.terminalValidating}{" "}
+                  <span className="text-zinc-300">{f.terminalFilename}</span>
                 </p>
                 <p className="mt-1.5 text-zinc-500">
                   Parsing QSO: XX1RF-ZZ3HAM (20M/CW) ...{" "}
-                  <span className="text-emerald-400">PASS</span>
+                  <span className="text-emerald-400">{f.terminalPass}</span>
                 </p>
                 <p className="text-zinc-500">
                   Parsing QSO: XX1RF-QQ7DX (40M/FT8) ...{" "}
-                  <span className="text-emerald-400">PASS</span>
+                  <span className="text-emerald-400">{f.terminalPass}</span>
                 </p>
                 <p className="text-zinc-500">
                   Parsing QSO: XX1RF-XX9CW (15M/SSB) ...{" "}
-                  <span className="text-amber-500">WARN:</span>
+                  <span className="text-amber-500">{f.terminalWarn}</span>
                 </p>
-                <p className="ml-4 text-amber-500/80">BAND_MISMATCH</p>
+                <p className="ml-4 text-amber-500/80">{f.terminalBandMismatch}</p>
                 <p className="mt-1.5 border-t border-zinc-800 pt-1.5 text-zinc-500">
-                  System check completed.{" "}
-                  <span className="text-zinc-300">98.4% Accuracy.</span>
+                  {f.terminalComplete}{" "}
+                  <span className="text-zinc-300">{f.terminalAccuracy}</span>
                 </p>
               </div>
             </div>
@@ -223,16 +219,16 @@ export default function LandingPage() {
           {/* Technical Specifications */}
           <HardwarePanel>
             <h3 className="mb-3 font-mono text-sm font-bold tracking-widest text-zinc-500">
-              SYSTEM SPECS
+              {s.title}
             </h3>
             <table className="w-full font-mono text-sm">
               <tbody>
                 {[
-                  ["LICENSE", "AGPL-3.0 (OPEN SOURCE)"],
-                  ["LOG FORMATS", "ADIF 3.1.4, CABRILLO V3"],
-                  ["CORE STACK", "NEXT.JS / NEST.JS"],
-                  ["DATABASE", "POSTGRESQL (RELATIONAL)"],
-                  ["MAINTAINER", "CRISTIAN WILGENHOFF [EA5JMC]"],
+                  [s.labelLicense, s.valueLicense],
+                  [s.labelLogFormats, s.valueLogFormats],
+                  [s.labelStack, s.valueStack],
+                  [s.labelDatabase, s.valueDatabase],
+                  [s.labelMaintainer, s.valueMaintainer],
                 ].map(([label, value]) => (
                   <tr key={label} className="border-b border-zinc-800/50">
                     <td className="py-2 pr-4 text-zinc-500">{label}</td>
@@ -246,17 +242,13 @@ export default function LandingPage() {
           {/* Managed Cloud Service */}
           <HardwarePanel>
             <h3 className="mb-3 font-mono text-sm font-bold tracking-wide text-amber-500">
-              MANAGED CLOUD SERVICE
+              {s.cloudTitle}
             </h3>
             <p className="font-mono text-sm leading-relaxed text-zinc-400">
-              The core engine is and always will be{" "}
-              <span className="text-amber-400">open source</span> and{" "}
-              <span className="text-amber-400">free to self-host</span>.
-              Deploy it on your own hardware, your own terms.
-              For clubs that want to get started instantly without worrying
-              about servers, backups, or updates, a Managed Cloud service
-              will be available post-product build. We handle the tech so
-              you can focus on the contest.
+              {s.cloudDesc}{" "}
+              <span className="text-amber-400">{s.cloudOpenSource}</span>{" & "}
+              <span className="text-amber-400">{s.cloudSelfHost}</span>.{" "}
+              {s.cloudDescTail}
             </p>
           </HardwarePanel>
         </div>
@@ -266,7 +258,7 @@ export default function LandingPage() {
       <footer className="border-t border-zinc-800 bg-zinc-900/80">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-center gap-4 px-8 py-6 text-center md:flex-row md:justify-between md:text-left sm:px-12">
           <p className="font-mono text-[11px] text-zinc-600">
-            &copy; 2025-2026 OPEN HAM AWARDS | LICENSED UNDER AGPLv3
+            {ft.copyright}
           </p>
           <a
             href="https://cwilgenhoff.github.io/"
@@ -274,7 +266,7 @@ export default function LandingPage() {
             rel="noopener noreferrer"
             className="font-mono text-[11px] text-zinc-600 transition hover:text-zinc-400"
           >
-            PROJECT BY CRISTIAN WILGENHOFF (EA5JMC)
+            {ft.projectBy}
           </a>
         </div>
       </footer>

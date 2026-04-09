@@ -1,3 +1,5 @@
+import type { SpectrumStrings } from "@/i18n/types";
+
 // Deterministic seeded PRNG — produces the same "random" spectrum on every
 // render / SSR pass so React hydration never mismatches.
 function mulberry32(seed: number) {
@@ -105,16 +107,16 @@ function generateSpectrum(): string {
 const tracePath = generateSpectrum();
 const fillPath = `M0,160 ${tracePath.replace(/^M[\d.]+,[\d.]+/, "L0,144")} L500,160 Z`;
 
-export function SpectrumAnalyzer() {
+export function SpectrumAnalyzer({ strings: sp }: { strings: SpectrumStrings }) {
   return (
     <div className="w-full rounded-none border border-zinc-800 bg-black/60 p-4 panel-inset">
       {/* Header labels */}
       <div className="mb-3 flex items-center justify-between font-mono text-[10px] text-zinc-500">
         <span>
-          CENTER: <span className="text-zinc-300">14.225 MHZ</span>
+          {sp.centerLabel} <span className="text-zinc-300">{sp.centerValue}</span>
         </span>
         <span>
-          SPAN: <span className="text-zinc-300">100 KHZ</span>
+          {sp.spanLabel} <span className="text-zinc-300">{sp.spanValue}</span>
         </span>
       </div>
 
@@ -184,13 +186,13 @@ export function SpectrumAnalyzer() {
       <div className="mt-2 flex justify-between font-mono text-[9px] text-zinc-600">
         <span>14.175</span>
         <span>14.200</span>
-        <span className="text-amber-500/70">14.225</span>
+        <span className="text-amber-500/70">{sp.centerValue}</span>
         <span>14.250</span>
         <span>14.275</span>
       </div>
       <div className="mt-1 flex justify-between font-mono text-[9px] text-zinc-600">
-        <span>CENTER: 14.225 MHZ</span>
-        <span>SPAN: 100 KHZ</span>
+        <span>{sp.centerLabel} {sp.centerValue}</span>
+        <span>{sp.spanLabel} {sp.spanValue}</span>
       </div>
     </div>
   );

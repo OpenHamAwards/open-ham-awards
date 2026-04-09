@@ -2,9 +2,13 @@
 
 import { useState, type FormEvent } from "react";
 import type { WaitlistEntry } from "@open-ham-awards/contracts";
-import { waitlistI18n as t } from "@/i18n";
+import type { WaitlistStrings } from "@/i18n/types";
 
-export function WaitlistForm() {
+interface WaitlistFormProps {
+  strings: WaitlistStrings;
+}
+
+export function WaitlistForm({ strings: t }: WaitlistFormProps) {
   const [callsign, setCallsign] = useState("");
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -106,7 +110,7 @@ export function WaitlistForm() {
           required
           minLength={3}
           maxLength={10}
-          className="h-12 w-full rounded-none border border-zinc-800 bg-black px-4 font-mono text-sm uppercase text-zinc-200 placeholder-zinc-600 outline-none transition focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/30 md:w-36 md:border-r-0"
+          className="relative h-12 w-full rounded-none border border-zinc-800 bg-black px-4 font-mono text-sm uppercase text-zinc-200 placeholder-zinc-600 outline-none transition focus:z-10 focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/30 md:w-36 md:border-r-0"
         />
         <input
           type="email"
@@ -115,7 +119,7 @@ export function WaitlistForm() {
           placeholder={t.emailPlaceholder}
           aria-label="Email address"
           required
-          className="h-12 w-full rounded-none border border-zinc-800 bg-black px-4 font-mono text-sm text-zinc-200 placeholder-zinc-600 outline-none transition focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/30 md:w-auto md:flex-1"
+          className="relative h-12 w-full rounded-none border border-zinc-800 bg-black px-4 font-mono text-sm text-zinc-200 placeholder-zinc-600 outline-none transition focus:z-10 focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/30 md:w-auto md:flex-1"
         />
         <button
           type="submit"
