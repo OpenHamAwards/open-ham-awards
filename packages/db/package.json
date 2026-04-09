@@ -4,6 +4,7 @@
   "main": "./generated/client/index.js",
   "types": "./generated/client/index.d.ts",
   "scripts": {
+    "postinstall": "prisma generate",
     "db:migrate": "dotenv -e ../../.env -- prisma migrate dev",
     "db:generate": "dotenv -e ../../.env -- prisma generate"
   },
