@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist_Mono, Inter } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { locales, hasLocale } from "./dictionaries";
 import { notFound } from "next/navigation";
 import "../globals.css";
@@ -37,6 +38,7 @@ export default async function RootLayout({
     <html lang={lang} className={`${inter.variable} ${geistMono.variable}`}>
       <body className="min-h-screen bg-zinc-900 text-zinc-200 antialiased">
         {children}
+        <Analytics />
       </body>
     </html>
   );
