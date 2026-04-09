@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { HardwarePanel } from "@/components/hardware-panel";
 import { SpectrumAnalyzer } from "@/components/spectrum-analyzer";
 import { WaitlistForm } from "@/components/waitlist-form";
@@ -39,19 +40,27 @@ export default function LandingPage() {
     <div className="min-h-screen bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-zinc-800 via-zinc-950 to-black font-sans">
       {/* ─── HEADER ─── */}
       <header className="border-b border-zinc-800 bg-zinc-900/95 backdrop-blur">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-8 py-3 sm:px-12">
           {/* Logo */}
-          <span className="font-mono text-sm font-bold tracking-widest text-amber-500">
+          <Link href="/" className="whitespace-nowrap font-mono text-xs font-bold tracking-widest text-amber-500 md:text-sm">
             OPEN HAM AWARDS
-          </span>
+          </Link>
 
           {/* Nav */}
-          <nav className="hidden items-center gap-1 font-mono text-xs sm:flex">
+          <nav className="flex items-center gap-1 font-mono text-[10px] md:text-xs">
+            <a
+              href="https://www.qrz.com/db/EA5JMC"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="whitespace-nowrap px-2 py-1.5 text-zinc-500 transition hover:text-zinc-300 md:px-3"
+            >
+              OP: EA5JMC
+            </a>
             <a
               href="https://github.com/OpenHamAwards/open-ham-awards"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-sm px-3 py-1.5 text-zinc-500 transition hover:text-zinc-300"
+              className="whitespace-nowrap px-2 py-1.5 text-zinc-500 transition hover:text-zinc-300 md:px-3"
             >
               CONTRIBUTE
             </a>
@@ -62,18 +71,18 @@ export default function LandingPage() {
 
       {/* ─── HERO ─── */}
       <section className="hero-gradient">
-        <div className="mx-auto grid max-w-7xl gap-8 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-12 lg:py-24">
+        <div className="mx-auto grid max-w-7xl gap-4 px-8 py-10 sm:px-12 lg:grid-cols-2 lg:gap-8 lg:py-14">
           {/* Left column */}
           <div className="flex flex-col justify-center">
             {/* Headline */}
-            <h1 className="text-4xl font-black leading-tight tracking-tight sm:text-5xl">
+            <h1 className="text-4xl font-black leading-tight tracking-tight md:text-5xl lg:text-6xl">
               Run your club&apos;s{" "}
               <span className="text-amber-500">Ham Radio</span> contests{" "}
               <span className="text-amber-400">with ease.</span>
             </h1>
 
             {/* Subtext */}
-            <p className="mt-5 max-w-lg font-mono text-sm leading-relaxed text-zinc-400">
+            <p className="mt-3 max-w-[600px] font-mono text-base leading-relaxed text-zinc-400 md:text-xl">
               A simple, open-source tool for managing awards and tracking
               progress. We&apos;ve taken the stress out of checking logs and
               validating contacts so your club can spend more time on the
@@ -93,16 +102,16 @@ export default function LandingPage() {
 
       {/* ─── FEATURE GRID ─── */}
       <section className="border-t border-zinc-800">
-        <div className="mx-auto grid max-w-7xl gap-6 px-4 py-20 sm:grid-cols-2 sm:px-6 lg:grid-cols-3">
+        <div className="mx-auto grid max-w-7xl gap-4 px-8 py-10 sm:grid-cols-2 sm:px-12 lg:grid-cols-3">
           {/* Custom Award Engine */}
           <HardwarePanel>
-            <div className="mb-3 text-amber-500">
+            <div className="mb-2 text-amber-500">
               <AwardIcon />
             </div>
-            <h3 className="font-mono text-sm font-bold tracking-wide text-zinc-100">
+            <h3 className="mb-3 font-mono text-sm font-bold tracking-wide text-zinc-100">
               CUSTOM AWARD ENGINE
             </h3>
-            <p className="mt-2 font-mono text-xs leading-relaxed text-zinc-400">
+            <p className="mt-1.5 font-mono text-sm leading-snug text-zinc-400">
               Easily define award parameters, locations, and scoring
               criteria for your specific club event. Total flexibility
               to fit your club&apos;s specific rules.
@@ -111,13 +120,13 @@ export default function LandingPage() {
 
           {/* Activator Hub */}
           <HardwarePanel>
-            <div className="mb-3 text-amber-500">
+            <div className="mb-2 text-amber-500">
               <RadioIcon />
             </div>
-            <h3 className="font-mono text-sm font-bold tracking-wide text-zinc-100">
+            <h3 className="mb-3 font-mono text-sm font-bold tracking-wide text-zinc-100">
               ACTIVATOR ANNOUNCEMENTS
             </h3>
-            <p className="mt-2 font-mono text-xs leading-relaxed text-zinc-400">
+            <p className="mt-1.5 font-mono text-sm leading-snug text-zinc-400">
               Coordinate upcoming activity. Operators can share their
               planned schedules in advance so hunters know which bands
               to monitor for the next contact.
@@ -126,19 +135,19 @@ export default function LandingPage() {
 
           {/* Live Progress */}
           <HardwarePanel>
-            <div className="mb-3 text-amber-500">
+            <div className="mb-2 text-amber-500">
               <ChartIcon />
             </div>
-            <h3 className="font-mono text-sm font-bold tracking-wide text-zinc-100">
+            <h3 className="mb-3 font-mono text-sm font-bold tracking-wide text-zinc-100">
               PROGRESS TRACKING
             </h3>
-            <p className="mt-2 font-mono text-xs leading-relaxed text-zinc-400">
+            <p className="mt-1.5 font-mono text-sm leading-snug text-zinc-400">
               See results as logs are uploaded. Hunters can follow
               their own progress and see the club rankings update
               as participants submit their contacts.
             </p>
             {/* Mock leaderboard */}
-            <div className="mt-4 space-y-1.5 border-t border-zinc-700 pt-3 font-mono text-xs">
+            <div className="mt-3 space-y-1.5 border-t border-zinc-800 pt-3 font-mono text-sm">
               {[
                 { rank: 1, call: "XX1RF", pts: "48,200" },
                 { rank: 2, call: "ZZ3HAM", pts: "41,875" },
@@ -161,28 +170,26 @@ export default function LandingPage() {
 
           {/* Painless Validation — spans full width, two-column interior */}
           <HardwarePanel className="sm:col-span-2 lg:col-span-3">
-            <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:gap-8">
+            <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:gap-8">
               {/* Left — text content */}
-              <div className="flex flex-1 items-start gap-4">
-                <div className="mt-0.5 shrink-0 text-amber-500">
+              <div className="flex-1">
+                <div className="mb-2 text-amber-500">
                   <CheckCircleIcon />
                 </div>
-                <div>
-                  <h3 className="font-mono text-sm font-bold tracking-wide text-zinc-100">
-                    PAINLESS VALIDATION
-                  </h3>
-                  <p className="mt-2 font-mono text-xs leading-relaxed text-zinc-400">
-                    Stop chasing log formatting problems. Our automated engine
-                    cross-references hunter and activator logs to generate
-                    validated award and contest tracking instantly. Flagging
-                    discrepancies with forensic precision. No more chasing ADIF
-                    errors via email thread.
-                  </p>
-                </div>
+                <h3 className="mb-3 font-mono text-sm font-bold tracking-wide text-zinc-100">
+                  PAINLESS VALIDATION
+                </h3>
+                <p className="mt-1.5 font-mono text-sm leading-snug text-zinc-400">
+                  Stop chasing log formatting problems. Our automated engine
+                  cross-references hunter and activator logs to generate
+                  validated award and contest tracking instantly. Flagging
+                  discrepancies with forensic precision. No more chasing ADIF
+                  errors via email thread.
+                </p>
               </div>
 
               {/* Right — terminal-style validation output */}
-              <div className="shrink-0 rounded-sm border border-zinc-700 bg-black/80 px-4 py-3 font-mono text-[11px] leading-relaxed lg:w-[340px]">
+              <div className="shrink-0 rounded-none border border-zinc-800 bg-black/80 px-4 py-3 font-mono text-[10px] leading-tight sm:text-xs md:text-sm md:leading-snug lg:w-[420px]">
                 <p className="text-zinc-500">
                   VALIDATING:{" "}
                   <span className="text-zinc-300">ADIF_UPLOAD_2026_03.LOG</span>
@@ -212,21 +219,22 @@ export default function LandingPage() {
 
       {/* ─── SPECS & CLOUD ROW ─── */}
       <section className="border-t border-zinc-800">
-        <div className="mx-auto grid max-w-7xl gap-6 px-4 py-20 sm:px-6 lg:grid-cols-2">
+        <div className="mx-auto grid max-w-7xl gap-4 px-8 py-10 sm:px-12 lg:grid-cols-2">
           {/* Technical Specifications */}
           <HardwarePanel>
-            <h3 className="mb-4 font-mono text-xs font-bold tracking-widest text-zinc-500">
-              TECHNICAL_SPECIFICATIONS_V1.0
+            <h3 className="mb-3 font-mono text-sm font-bold tracking-widest text-zinc-500">
+              SYSTEM SPECS
             </h3>
-            <table className="w-full font-mono text-xs">
+            <table className="w-full font-mono text-sm">
               <tbody>
                 {[
                   ["LICENSE", "AGPL-3.0 (OPEN SOURCE)"],
                   ["LOG FORMATS", "ADIF 3.1.4, CABRILLO V3"],
                   ["CORE STACK", "NEXT.JS / NEST.JS"],
                   ["DATABASE", "POSTGRESQL (RELATIONAL)"],
+                  ["MAINTAINER", "CRISTIAN WILGENHOFF [EA5JMC]"],
                 ].map(([label, value]) => (
-                  <tr key={label} className="border-b border-zinc-700/50">
+                  <tr key={label} className="border-b border-zinc-800/50">
                     <td className="py-2 pr-4 text-zinc-500">{label}</td>
                     <td className="py-2 text-zinc-300">{value}</td>
                   </tr>
@@ -237,10 +245,10 @@ export default function LandingPage() {
 
           {/* Managed Cloud Service */}
           <HardwarePanel>
-            <h3 className="mb-4 font-mono text-sm font-bold tracking-wide text-amber-500">
+            <h3 className="mb-3 font-mono text-sm font-bold tracking-wide text-amber-500">
               MANAGED CLOUD SERVICE
             </h3>
-            <p className="font-mono text-xs leading-relaxed text-zinc-400">
+            <p className="font-mono text-sm leading-relaxed text-zinc-400">
               The core engine is and always will be{" "}
               <span className="text-amber-400">open source</span> and{" "}
               <span className="text-amber-400">free to self-host</span>.
@@ -256,10 +264,18 @@ export default function LandingPage() {
 
       {/* ─── FOOTER ─── */}
       <footer className="border-t border-zinc-800 bg-zinc-900/80">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-4 py-6 sm:flex-row sm:px-6">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-center gap-4 px-8 py-6 text-center md:flex-row md:justify-between md:text-left sm:px-12">
           <p className="font-mono text-[11px] text-zinc-600">
             &copy; 2025-2026 OPEN HAM AWARDS | LICENSED UNDER AGPLv3
           </p>
+          <a
+            href="https://cwilgenhoff.github.io/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-mono text-[11px] text-zinc-600 transition hover:text-zinc-400"
+          >
+            PROJECT BY CRISTIAN WILGENHOFF (EA5JMC)
+          </a>
         </div>
       </footer>
     </div>

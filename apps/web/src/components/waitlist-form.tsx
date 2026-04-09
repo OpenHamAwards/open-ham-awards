@@ -43,7 +43,7 @@ export function WaitlistForm() {
 
   if (submitted) {
     return (
-      <div role="status" aria-live="polite" aria-atomic="true" className="mt-8 rounded-sm border border-emerald-700/50 bg-emerald-900/20 px-4 py-3 font-mono text-sm text-emerald-400">
+      <div role="status" aria-live="polite" aria-atomic="true" className="mt-8 rounded-none border border-emerald-700/50 bg-emerald-900/20 px-4 py-3 font-mono text-sm text-emerald-400">
         REGISTRATION RECEIVED — YOU&apos;RE ON THE LIST, {callsign.toUpperCase() || "OPERATOR"}.
       </div>
     );
@@ -54,7 +54,7 @@ export function WaitlistForm() {
       <label className="mb-2 block font-mono text-[10px] tracking-widest text-zinc-500">
         OPERATOR@STATION_REGISTRATION
       </label>
-      <div className="flex flex-col gap-2 sm:flex-row sm:gap-0">
+      <div className="flex flex-col gap-3 md:flex-row md:gap-0">
         <input
           type="text"
           value={callsign}
@@ -64,7 +64,7 @@ export function WaitlistForm() {
           required
           minLength={3}
           maxLength={10}
-          className="h-12 w-full rounded-sm border border-zinc-700 bg-black px-4 font-mono text-sm uppercase text-zinc-200 placeholder-zinc-600 outline-none transition focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/30 sm:w-36 sm:rounded-r-none sm:border-r-0"
+          className="h-12 w-full rounded-none border border-zinc-800 bg-black px-4 font-mono text-sm uppercase text-zinc-200 placeholder-zinc-600 outline-none transition focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/30 md:w-36 md:border-r-0"
         />
         <input
           type="email"
@@ -73,12 +73,12 @@ export function WaitlistForm() {
           placeholder="your@email.net"
           aria-label="Email address"
           required
-          className="h-12 flex-1 rounded-sm border border-zinc-700 bg-black px-4 font-mono text-sm text-zinc-200 placeholder-zinc-600 outline-none transition focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/30 sm:rounded-none"
+          className="h-12 w-full rounded-none border border-zinc-800 bg-black px-4 font-mono text-sm text-zinc-200 placeholder-zinc-600 outline-none transition focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/30 md:w-auto md:flex-1"
         />
         <button
           type="submit"
           disabled={submitting}
-          className="btn-glow h-12 rounded-sm bg-amber-500 px-6 font-mono text-sm font-bold tracking-wider text-black transition hover:bg-amber-400 disabled:opacity-60 sm:rounded-l-none"
+          className="btn-glow h-12 w-full rounded-none border border-amber-500 bg-amber-500 px-4 font-mono text-sm font-bold tracking-wider text-black transition hover:bg-amber-400 disabled:opacity-60 md:w-auto md:border-0 md:px-6"
         >
           {submitting ? "SENDING..." : "JOIN WAITLIST"}
         </button>

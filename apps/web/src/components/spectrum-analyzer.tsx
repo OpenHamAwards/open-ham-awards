@@ -107,7 +107,7 @@ const fillPath = `M0,160 ${tracePath.replace(/^M[\d.]+,[\d.]+/, "L0,144")} L500,
 
 export function SpectrumAnalyzer() {
   return (
-    <div className="w-full rounded-sm border border-zinc-700 bg-black/60 p-4 panel-inset">
+    <div className="w-full rounded-none border border-zinc-800 bg-black/60 p-4 panel-inset">
       {/* Header labels */}
       <div className="mb-3 flex items-center justify-between font-mono text-[10px] text-zinc-500">
         <span>
