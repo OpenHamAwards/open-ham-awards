@@ -9,7 +9,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 - **Aesthetic:** Tactile Brutalist / Industrial Hardware.
 - **Color Palette:** Amber on Charcoal (#f59e0b on dark zinc).
 - **Typography:** Strictly Monospace for data/subheaders. 
-- **Font Scale:** - Headline: text-5xl
-  - Sub-header: text-xl (max-width 2xl)
+- **Font Scale:** - Headline: text-4xl md:text-5xl lg:text-6xl (responsive)
+  - Sub-header: text-base md:text-xl (max-width 600px)
   - Content/Tables: text-sm (High Information Density)
 - **Voice:** Professional, engineering-focused, respectful of Ham Radio history. Avoid "bloat" or "startup hype".
