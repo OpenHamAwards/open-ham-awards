@@ -51,7 +51,8 @@ export default async function LandingPage({ params }: PageProps<"/[lang]">) {
       <header className="border-b border-zinc-800 bg-zinc-900/95 backdrop-blur">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-8 py-3 sm:px-12">
           {/* Logo */}
-          <Link href={`/${lang}`} className="whitespace-nowrap font-mono text-xs font-bold tracking-widest text-amber-500 md:text-sm">
+          <Link href={`/${lang}`} className="flex items-center whitespace-nowrap font-mono text-xs font-bold tracking-widest text-amber-500 md:text-sm">
+            <span className="mr-3 bg-amber-500 px-2 py-0.5 text-xs font-bold tracking-widest text-black">OHA</span>
             {h.logo}
           </Link>
 
