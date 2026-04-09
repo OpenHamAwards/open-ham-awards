@@ -1,8 +1,9 @@
 import "server-only";
 
 import type { LocaleStrings } from "@/i18n/types";
+import { locales as supportedLocales, type Locale } from "@/i18n/config";
 
-const dictionaries: Record<string, () => Promise<LocaleStrings>> = {
+const dictionaries: Record<Locale, () => Promise<LocaleStrings>> = {
   en: async () => {
     const { waitlist } = await import("@/i18n/en/waitlist");
     const { header } = await import("@/i18n/en/header");
@@ -25,12 +26,11 @@ const dictionaries: Record<string, () => Promise<LocaleStrings>> = {
   },
 };
 
-export type Locale = keyof typeof dictionaries;
-
-export const locales = Object.keys(dictionaries);
+export { supportedLocales as locales };
+export type { Locale };
 
 export const hasLocale = (locale: string): locale is Locale =>
-  locale in dictionaries;
+  supportedLocales.includes(locale as Locale);
 
 export const getDictionary = async (locale: Locale) =>
-  dictionaries[locale]!();
+  dictionaries[locale]();
